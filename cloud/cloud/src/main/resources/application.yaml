@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: cloud
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/cloud_db
+    username: postgres
+    password: 12345678
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  session:
+    store-type: jdbc
+    jdbc:
+      initialize-schema: always
