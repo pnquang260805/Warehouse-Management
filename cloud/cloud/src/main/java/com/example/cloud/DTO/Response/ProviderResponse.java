@@ -3,6 +3,8 @@ package com.example.cloud.DTO.Response;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,4 +16,5 @@ public class ProviderResponse {
     String location;
     String email;
     String phone;
+    List<Integer> productsId;
 }

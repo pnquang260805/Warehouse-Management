@@ -4,26 +4,28 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
+@Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Data
-@Table(name = "providers")
-public class Provider {
+@Table(name = "products")
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String name;
-    String location;
-    String email;
-    String phone;
+    String description;
+    String sku; // Mã nội bộ
+    String unit; // Đơn vị sản phẩm
+    BigDecimal price;
+    Long quantity;
 
-    @Builder.Default
-    @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<Product> products = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "provider_id")
+    Provider provider;
 }
